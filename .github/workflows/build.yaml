@@ -1,0 +1,14 @@
+name: ci
+
+on: push
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v1 # dit betekent volgens mij gewoon git clone deze repo, dit wordt niet standaard gedaan dus
+        - name: Build the tagged Docker image
+          env:
+            IMAGE_TAG: ${{ github.sha }}
+          run: |
+            docker build -t "$GITHUB_REPOSITORY:$IMAGE_TAG" .
