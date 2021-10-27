@@ -29,6 +29,6 @@ resource "aws_cognito_user_pool" "ghactions-project" {
 resource "aws_cognito_user_pool_client" "ghactions-project-client" {
   name = "ghactions-project-client"
 
-  user_pool_id = aws_cognito_user_pool.ghactions-project.id
-  explicit_auth_flows = ["ALLOW_REFRESH_TOKEN_AUTH","ALLOW_ADMIN_USER_PASSWORD_AUTH"]
+  user_pool_id        = aws_cognito_user_pool.ghactions-project.id
+  explicit_auth_flows = ["ALLOW_REFRESH_TOKEN_AUTH", "ALLOW_ADMIN_USER_PASSWORD_AUTH"]
 }
