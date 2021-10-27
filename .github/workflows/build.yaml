@@ -54,8 +54,8 @@ jobs:
 
     # is dit uberhaupt nodig door de environment variables?
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+    # - name: Configure AWS credentials
+    #   uses: aws-actions/configure-aws-credentials@v1
 
 
     - uses: hashicorp/setup-terraform@v1
