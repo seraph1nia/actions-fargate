@@ -9,10 +9,10 @@ resource "aws_ecs_task_definition" "main" {
   task_role_arn      = aws_iam_role.ecs_task_role.arn
   container_definitions = jsonencode([
     {
-      name        = "${var.name}-container-${var.environment}"
-      image       = "${var.image}"
-      essential   = true
-      #environment = "${var.environment}" # nu nog even niet, ik weet niet wat dit betekent, ik vermoed iets als een logische scheiding zoals namespace in k8s
+      name      = "${var.name}-container-${var.environment}"
+      image     = "${var.image}"
+      essential = true
+      #environment = "${var.environment}" # AH!, dit moet waarschijnlijk een kv dict zijn, environment variables....
       portMappings = [
         {
           protocol      = "tcp"
