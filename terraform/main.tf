@@ -2,6 +2,13 @@ provider "aws" {
   region = "eu-central-1"
 }
 
+terraform {
+  backend "remote" {}
+}
+
+
+
+
 resource "aws_iam_user" "cognito_admin" {
   name = "ghactions-project-admin"
 }
