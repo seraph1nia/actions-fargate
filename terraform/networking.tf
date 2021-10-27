@@ -30,7 +30,7 @@ resource "aws_subnet" "private" {
 # hier komen de loadbalancers in
 resource "aws_subnet" "public" {
   vpc_id     = aws_vpc.main.id
-  cidr_block = "10.0.0.0/24"
+  cidr_block = "10.0.10.0/24"
   #TODO: availability_zone
 }
 
