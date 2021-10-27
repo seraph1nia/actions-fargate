@@ -12,7 +12,7 @@ resource "aws_ecs_task_definition" "main" {
       name        = "${var.name}-container-${var.environment}"
       image       = "${var.image}"
       essential   = true
-      environment = "${var.environment}"
+      #environment = "${var.environment}" # nu nog even niet, ik weet niet wat dit betekent, ik vermoed iets als een logische scheiding zoals namespace in k8s
       portMappings = [
         {
           protocol      = "tcp"
