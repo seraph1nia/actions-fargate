@@ -9,3 +9,11 @@ repos:
     rev: 19.3b0
     hooks:
     -   id: black
+-   repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: 32dae32273c9a1f4bd20f2425301c669ba5c757c
+    hooks:
+        - id: terraform_fmt
+          args:
+            - --args=-no-color
+            - --args=-diff
+            - --args=-write=false
