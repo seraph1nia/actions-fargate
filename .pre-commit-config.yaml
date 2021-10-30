@@ -9,12 +9,8 @@ repos:
     rev: 19.3b0
     hooks:
     -   id: black
--   repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: 32dae32273c9a1f4bd20f2425301c669ba5c757c
-    hooks:
-        - id: terraform_fmt
-          args:
-            - --args=--path=./terraform
-            - --args=-no-color
-            - --args=-diff
-            - --args=-write=false
+- repo: https://github.com/gruntwork-io/pre-commit
+  rev: v0.1.17
+  hooks:
+    - id: terraform-validate
+    - id: terraform-fmt

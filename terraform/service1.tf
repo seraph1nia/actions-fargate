@@ -55,7 +55,7 @@ resource "aws_ecs_service" "main" {
   # dit is voor productie een slecht idee natuurlijk
 
   lifecycle {
-    ignore_changes = [ desired_count ]
+    ignore_changes = [desired_count]
   }
 }
 
@@ -196,7 +196,7 @@ resource "aws_security_group" "alb" {
   }
 }
 
-# security group voor 
+# security group voor
 resource "aws_security_group" "ecs_tasks" {
   name   = "${var.name}-sg-task-${var.environment}"
   vpc_id = aws_vpc.main.id
