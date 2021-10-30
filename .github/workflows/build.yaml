@@ -53,6 +53,9 @@ jobs:
     # https://github.com/hashicorp/setup-terraform
     - uses: actions/checkout@v2
 
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
