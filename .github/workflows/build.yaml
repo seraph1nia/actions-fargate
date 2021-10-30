@@ -80,8 +80,8 @@ jobs:
 
     - name: Terraform Plan
       id: plan
-      run: terraform plan -no-color -var="image=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:{{ github.sha }}"
+      run: terraform plan -no-color -var="image=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
     
     - name: Terraform Apply
       id: apply
-      run: terraform apply -auto-approve -var="image=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:{{ github.sha }}"
+      run: terraform apply -auto-approve -var="image=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
