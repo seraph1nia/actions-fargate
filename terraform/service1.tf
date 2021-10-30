@@ -47,8 +47,14 @@ resource "aws_ecs_service" "main" {
     container_port   = 8080
   }
   # wat is hier ook alweer de bedoeling van?
+  # lifecycle {
+  #   ignore_changes = [task_definition, desired_count]
+  # }
+
+  # als je wilt dat de revision automatisch update, moet je de change in task_definitoon niet ignoren natuurlijk...
+
   lifecycle {
-    ignore_changes = [task_definition, desired_count]
+    ignore_changes = [ desired_count ]
   }
 }
 
