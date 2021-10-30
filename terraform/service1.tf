@@ -52,6 +52,7 @@ resource "aws_ecs_service" "main" {
   # }
 
   # als je wilt dat de revision automatisch update, moet je de change in task_definitoon niet ignoren natuurlijk...
+  # dit is voor productie een slecht idee natuurlijk
 
   lifecycle {
     ignore_changes = [ desired_count ]
