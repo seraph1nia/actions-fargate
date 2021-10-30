@@ -2,8 +2,9 @@ resource "aws_ecs_task_definition" "main" {
   family                   = "${var.name}-service-${var.environment}"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu                      = 30
-  memory                   = 50
+  # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html moeten specifieke waarders hebben, behoorlijk groot...
+  cpu    = 256
+  memory = 512
   # dit geeft fargate rechten nodig
   execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
   task_role_arn      = aws_iam_role.ecs_task_role.arn
@@ -16,8 +17,8 @@ resource "aws_ecs_task_definition" "main" {
       portMappings = [
         {
           protocol      = "tcp"
-          containerPort = 80
-          hostPort      = 80
+          containerPort = 8080
+          hostPort      = 8080
         }
       ]
     }
@@ -43,7 +44,7 @@ resource "aws_ecs_service" "main" {
   load_balancer {
     target_group_arn = aws_alb_target_group.main.arn
     container_name   = "${var.name}-container-${var.environment}"
-    container_port   = 80
+    container_port   = 8080
   }
   # wat is hier ook alweer de bedoeling van?
   lifecycle {
@@ -195,8 +196,8 @@ resource "aws_security_group" "ecs_tasks" {
 
   ingress {
     protocol         = "tcp"
-    from_port        = 80
-    to_port          = 80
+    from_port        = 8080
+    to_port          = 8080
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
